@@ -46,6 +46,7 @@ pipeline {
                 sh '''
                     npm install netlify-cli --legacy-peer-deps
                     node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --dir=dist --prod
                 '''
             }
         }
