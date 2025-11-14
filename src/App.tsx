@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header title="React App with Tests - Jenkins Demo" />
+      <Header title="React App with Tests - [Jenkins Demo]" />
       
       <div className="container">
         <Card 
