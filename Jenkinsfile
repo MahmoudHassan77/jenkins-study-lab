@@ -37,8 +37,7 @@ pipeline {
     }
     post {
         always {
-            echo '🔔 Pipeline finished.'
-            junit 'test-results/junit.xml' , allowEmptyResults: true
+            junit 'test-results/junit.xml'
         }
     }
 }
