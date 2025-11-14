@@ -7,15 +7,17 @@ pipeline {
         }
 
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
                 sh '''
-                    ls -la
-                    node --version
-                    npm --version
                     npm ci --legacy-peer-deps
-                    npm run build
-                    ls -la
+                '''
+            }
+        }
+        stage('Lint') {
+            steps {
+                sh '''
+                    npm run lint || true
                 '''
             }
         }
@@ -25,6 +27,13 @@ pipeline {
                    mkdir -p test-results
                    test -f dist/index.html
                    npm run test:ci
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                    npm run build
                 '''
             }
         }
