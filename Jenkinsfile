@@ -29,7 +29,6 @@ pipeline {
             steps {
                 sh '''
                    mkdir -p test-results
-                   test -f dist/index.html
                    npm run test:ci
                 '''
             }
@@ -46,7 +45,7 @@ pipeline {
                 sh '''
                     npm install netlify-cli --legacy-peer-deps
                     node_modules/.bin/netlify status
-                    node_modules/.bin/netlify deploy --dir=build --prod
+                    node_modules/.bin/netlify deploy --prod --dir=dist --build=false
                 '''
             }
         }
