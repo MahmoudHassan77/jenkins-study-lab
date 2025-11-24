@@ -17,6 +17,19 @@ pipeline {
                sh 'npm run lint || true'
             }
         }
+        stage('Test') {
+            steps {
+               sh '''
+                    mkdir -p test-results
+                    npm run test:ci
+               '''
+            }
+        }
+        stage('Build') {
+            steps {
+               sh 'npm run build'
+            }
+        }
 
     }
 }
