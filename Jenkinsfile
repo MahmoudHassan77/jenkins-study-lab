@@ -12,5 +12,11 @@ pipeline {
                sh 'npm ci --legacy-peer-deps'
             }
         }
+        stage('Lint') {
+            steps {
+               sh 'npm run lint || true'
+            }
+        }
+
     }
 }
