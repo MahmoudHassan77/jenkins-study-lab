@@ -5,6 +5,10 @@ pipeline {
             reuseNode true
         }
     }
+    environment {
+        NETLIFY_ACCESS_TOKEN = credintials("netlify-access-tocken")
+        NETLIFY_SITE_ID = '9c5b80bb-f247-477a-b532-882517372c59'
+    }
 
     stages {
         stage('Install Dependencies') {
@@ -28,6 +32,15 @@ pipeline {
         stage('Build') {
             steps {
                sh 'npm run build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+               sh '''
+                    npm install netlify-cli --legacy-peer-deps
+                    node_modules/.bin/netlify status
+                    node_modules/.bin/netlify deploy --prod --dir=dist --no-build
+                '''
             }
         }
 
