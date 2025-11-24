@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        NETLIFY_ACCESS_TOKEN = credintials("netlify-access-tocken")
+        NETLIFY_ACCESS_TOKEN = credentials("netlify-access-tocken")
         NETLIFY_SITE_ID = '9c5b80bb-f247-477a-b532-882517372c59'
     }
 
